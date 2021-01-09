@@ -1,6 +1,6 @@
 {
   "name": "caio-brendo/rating-input",
-  "description": "Projeto que gera um componente para avalia\u0000\u0000o.",
+  "description": "Componente que renderiza estrelas para seleção, bastante útil para trabalhar com avaliações.",
   "type": "library",
   "authors": [
     {

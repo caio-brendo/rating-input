@@ -6,8 +6,10 @@ $(() => {
             const path = $(v).attr('data-path');
             if (parseInt($(v).attr('data-value')) <= val2) {
                 $(v).attr('src', `${path}/imgs/fav.svg`);
+                $(v).removeClass('grey').addClass('yellow');
             } else {
                 $(v).attr('src', `${path}/imgs/fav-gray.svg`);
+                $(v).removeClass('yellow').addClass('grey');
             }
         });
         $('.input-rating').triggerHandler('afterChange', '[jQuery(this)]');
@@ -20,7 +22,12 @@ $(() => {
     });
 
     $(document).on('click', '.star', ({target}) => {
-        const value = $(target).attr('data-value');
+        let value = $(target).attr('data-value');
+        const hasYellow = $(target).hasClass('yellow');
+        const oldValue = $('.rating-container .input-rating').val();
+        if (value === '1' && oldValue === '1' && hasYellow) {
+            value = '0';
+        }
         $(target).parent().find('.input-rating').val(value).trigger('change');
     });
 });

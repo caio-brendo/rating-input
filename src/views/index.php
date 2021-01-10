@@ -29,7 +29,7 @@ use yii\web\View;
     }
     for ($i = 1; $i <= $qtd; $i++):
         ?>
-        <img src="<?= $path ?>/imgs/fav-gray.svg" data-value="<?= $i ?>" data-path="<?= $path ?>" class="star">
+        <img src="<?= $path ?>/imgs/fav-gray.svg" data-value="<?= $i ?>" data-path="<?= $path ?>" class="star grey">
     <?php
     endfor;
     ?>

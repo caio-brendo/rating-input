@@ -6,6 +6,7 @@ use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\bootstrap\Widget;
 use yii\helpers\Html;
+use yii\web\View;
 
 class Rating extends Widget
 {
@@ -14,6 +15,8 @@ class Rating extends Widget
     public $value = '';
     public $name = '';
     public $qtdStar = 5;
+    public $starHeight = '29px';
+    public $starSpace = '10px';
 
 
     /**
@@ -42,9 +45,23 @@ class Rating extends Widget
     public function run()
     {
         $asset = RatingAsset::register($this->getView());
+        $this->registerCss($this->getView());
         $path = $asset->baseUrl;
         $qtd = $this->qtdStar;
         $id = $this->id ?: Html::getInputId($this->model, $this->attribute);
         return $this->render('index.php', ['qtd' => $qtd, 'path' => $path, 'model' => $this->model, 'attribute' => $this->attribute, 'value' => $this->value, 'name' => $this->name, 'id' => $id]);
+    }
+
+    /**
+     * @param $view View
+     */
+    private function registerCss($view)
+    {
+        $css = '.star{';
+        $css .= "height: $this->starHeight;";
+        $css .= "margin-right: $this->starSpace;";
+        $css .= '}';
+
+        $view->registerCss($css);
     }
 }

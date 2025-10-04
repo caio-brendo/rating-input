@@ -1,6 +1,6 @@
 <?php
 
-namespace caiobrendo;
+namespace caiobrendo\ratinginput;
 
 use yii\base\InvalidConfigException;
 use yii\base\Model;
